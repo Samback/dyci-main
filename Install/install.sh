@@ -37,6 +37,7 @@ echo
 echo -n "== Backing up clang : "
 
 if [[ ! -f ${CLANG_BACKUP_LOCATION} ]]; then
+# We should backup clang ONLY if it is an binary file only
   log "sudo cp ${CLANG_LOCATION} ${CLANG_BACKUP_LOCATION}"
   sudo cp "${CLANG_LOCATION}" "${CLANG_BACKUP_LOCATION}"
   log "echo Backup is at : ${CLANG_BACKUP_LOCATION}"
@@ -70,7 +71,7 @@ log "USER_HOME = ${USER_HOME}"
 DYCI_ROOT_DIR="${USER_HOME}/.dyci"
 log "DYCI_ROOT_DIR='${USER_HOME}/.dyci'" 
 
-echo -n "== Preparing dyci-recompile : "
+echo -n "== Preparing dyci-recompile directories: "
 log "if [[ ! -d ${DYCI_ROOT_DIR}/index ]]; then"
 if [[ ! -d "${DYCI_ROOT_DIR}/index" ]]; then
 
